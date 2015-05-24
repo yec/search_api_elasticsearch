@@ -92,6 +92,7 @@ class SearchApiElasticsearchElastica extends SearchApiElasticsearchAbstractServi
           'search_api_autocomplete',
           'search_api_mlt',
           'search_api_data_type_location',
+          'search_api_data_type_geo_shape',
           // 'search_api_spellcheck',
         ));
     return isset($this->_supportedFeatures[$feature]);

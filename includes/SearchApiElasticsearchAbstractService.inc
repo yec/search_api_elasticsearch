@@ -438,6 +438,11 @@ abstract class SearchApiElasticsearchAbstractService extends SearchApiAbstractSe
           'lat_lon' => TRUE,
         );
 
+      case 'geo_shape':
+        return array(
+          'type' => 'geo_shape',
+        );
+
       default:
         return NULL;
     }

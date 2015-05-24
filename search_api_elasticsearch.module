@@ -24,6 +24,17 @@ function search_api_elasticsearch_menu() {
 }
 
 /**
+ * Implements hook_search_api_data_type_info().
+ */
+function search_api_elasticsearch_search_api_data_type_info() {
+  return array(
+    'geo_shape' => array(
+      'name' => t('Geo shape'),
+    ),
+  );
+}
+
+/**
  * Implements hook_views_api().
  */
 function search_api_elasticsearch_views_api() {
