@@ -30,8 +30,23 @@ function search_api_elasticsearch_search_api_data_type_info() {
   return array(
     'geo_shape' => array(
       'name' => t('Geo shape'),
+      'conversion callback' => 'search_api_elasticsearch_geometry_conversion'
     ),
   );
+}
+
+function search_api_elasticsearch_geometry_conversion($value, $original_type, $type) {
+
+  if ($type == 'geo_shape' && !is_object($value)) {
+    geophp_load();
+    $geometry = geoPHP::load($value);
+    if (is_object($geometry)) {
+      $json = json_decode($geometry->out('json'));
+      return $json;
+    }
+  }
+
+  return $value;
 }
 
 /**
